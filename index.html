@@ -1,74 +1,115 @@
 <!DOCTYPE html>
 <html lang="hi">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Money Earn</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background: #f3f4f6;
-      text-align: center;
-    }
+<title>Real Earn</title>
 
-    .header {
-      background: #2563eb;
-      color: white;
-      padding: 25px 10px;
-    }
+<style>
+body{
+  margin:0;
+  font-family:Arial,sans-serif;
+  background:#f3f4f6;
+}
 
-    .card {
-      background: white;
-      margin: 25px 15px;
-      padding: 25px;
-      border-radius: 15px;
-      box-shadow: 0 4px 12px #ccc;
-    }
+.header{
+  background:#2563eb;
+  color:white;
+  text-align:center;
+  padding:25px 10px;
+}
 
-    .balance {
-      font-size: 28px;
-      font-weight: bold;
-      margin: 20px;
-    }
+.card{
+  background:white;
+  margin:15px;
+  padding:20px;
+  border-radius:15px;
+  box-shadow:0 3px 10px #ccc;
+}
 
-    button {
-      background: #16a34a;
-      color: white;
-      border: 0;
-      padding: 14px 30px;
-      border-radius: 10px;
-      font-size: 17px;
-    }
+.balance{
+  font-size:30px;
+  font-weight:bold;
+  text-align:center;
+  margin:15px;
+}
 
-    .demo {
-      color: #dc2626;
-      font-weight: bold;
-    }
-  </style>
+.earn{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  border-bottom:1px solid #ddd;
+  padding:15px 0;
+}
+
+button{
+  background:#16a34a;
+  color:white;
+  border:0;
+  padding:10px 18px;
+  border-radius:8px;
+  font-size:15px;
+}
+
+.demo{
+  color:#dc2626;
+  text-align:center;
+  font-weight:bold;
+}
+</style>
 </head>
 
 <body>
 
-  <div class="header">
-    <h1>Money Earn</h1>
-    <p>Simple Earning Website</p>
+<div class="header">
+  <h1>Real Earn</h1>
+  <p>Real Earning Platform</p>
+</div>
+
+<div class="card">
+
+  <p class="real">🤑EARNING WEBSITE</p>
+
+  <h3>MainBalance</h3>
+
+  <div class="balance">₹0</div>
+
+</div>
+
+<div class="card">
+
+  <h2>💰Real Tasks</h2>
+
+  <div class="earn">
+    <span>Daily Check-in<br>₹10 Real</span>
+    <button onclick="real()">Claim</button>
   </div>
 
-  <div class="card">
-
-    <p class="REAL">⚠️ EARNING WEBSITE</p>
-
-    <h2>आपका Main Balance</h2>
-
-    <div class="balance">₹0</div>
-
-    <button onclick="alert('यह केवल earning plateform है — यहां earn कर सकते हो')">
-      Claim Reward
-    </button>
-
+  <div class="earn">
+    <span>Watch Video<br>₹20 Real</span>
+    <button onclick="real()">Watch</button>
   </div>
+
+  <div class="earn">
+    <span>Refer Friend<br>₹50 Real</span>
+    <button onclick="real()">Refer</button>
+  </div>
+
+</div>
+
+<div class="card">
+  <p class="real">
+    यह Real वेबसाइट है।<br>
+    वास्तविक पैसे का भुगतान होता है।
+  </p>
+</div>
+
+<script>
+function real(){
+  alert("यह रियल feature है। वास्तविक payment होती है।");
+}
+</script>
 
 </body>
 </html>
