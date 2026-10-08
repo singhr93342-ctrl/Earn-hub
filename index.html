@@ -3,112 +3,389 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Real Earn</title>
+<title>Computer Work Hub</title>
 
 <style>
+*{box-sizing:border-box}
 body{
   margin:0;
   font-family:Arial,sans-serif;
-  background:#f3f4f6;
+  background:#f4f7fb;
+  color:#222;
 }
-
-.header{
-  background:#2563eb;
+header{
+  background:#1769e0;
   color:white;
+  padding:18px;
   text-align:center;
-  padding:25px 10px;
 }
-
+header h1{margin:0 0 6px}
+.container{
+  max-width:900px;
+  margin:auto;
+  padding:15px;
+}
 .card{
   background:white;
-  margin:15px;
-  padding:20px;
-  border-radius:15px;
-  box-shadow:0 3px 10px #ccc;
+  border-radius:14px;
+  padding:18px;
+  margin:15px 0;
+  box-shadow:0 3px 12px rgba(0,0,0,.08);
 }
-
-.balance{
-  font-size:30px;
-  font-weight:bold;
-  text-align:center;
-  margin:15px;
-}
-
-.earn{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  border-bottom:1px solid #ddd;
-  padding:15px 0;
-}
-
-button{
-  background:#16a34a;
-  color:white;
-  border:0;
-  padding:10px 18px;
+input,button{
+  width:100%;
+  padding:12px;
+  margin:7px 0;
   border-radius:8px;
-  font-size:15px;
+  font-size:16px;
 }
-
-.demo{
-  color:#dc2626;
-  text-align:center;
+input{
+  border:1px solid #ccc;
+}
+button{
+  border:0;
+  background:#1769e0;
+  color:white;
+  cursor:pointer;
+}
+button:hover{opacity:.9}
+.service{
+  border:1px solid #ddd;
+  border-radius:12px;
+  padding:15px;
+  margin:12px 0;
+}
+.price{
+  font-size:20px;
   font-weight:bold;
+  color:#0b8f42;
+}
+.logout{
+  background:#d93025;
+}
+.hidden{display:none}
+.small{
+  color:#666;
+  font-size:14px;
+}
+#message{
+  font-weight:bold;
+  text-align:center;
 }
 </style>
 </head>
 
 <body>
 
-<div class="header">
-  <h1>Real Earn</h1>
-  <p>Real Earning Platform</p>
+<header>
+  <h1>💻 Computer Work Hub</h1>
+  <div>Online Computer Services</div>
+</header>
+
+<div class="container">
+
+<!-- LOGIN -->
+<div class="card" id="loginBox">
+  <h2>🔐 Login</h2>
+
+  <input id="loginEmail" type="email" placeholder="Email">
+  <input id="loginPassword" type="password" placeholder="Password">
+
+  <button onclick="login()">Login</button>
+
+  <p>Account नहीं है?</p>
+  <button onclick="showRegister()">Register करें</button>
 </div>
 
-<div class="card">
+<!-- REGISTER -->
+<div class="card hidden" id="registerBox">
+  <h2>📝 Register</h2>
 
-  <p class="real">🤑EARNING WEBSITE</p>
+  <input id="regName" placeholder="आपका नाम">
+  <input id="regEmail" type="email" placeholder="Email">
+  <input id="regPassword" type="password" placeholder="Password">
 
-  <h3>MainBalance</h3>
+  <button onclick="register()">Register</button>
+  <button onclick="showLogin()">Login पर जाएँ</button>
+</div>
 
-  <div class="balance">₹0</div>
+<!-- DASHBOARD -->
+<div id="dashboard" class="hidden">
+
+  <div class="card">
+    <h2>👋 Welcome, <span id="userName"></span></h2>
+    <p class="small">अपनी जरूरत की service चुनें।</p>
+    <button class="logout" onclick="logout()">Logout</button>
+  </div>
+
+  <div class="card">
+    <h2>💻 Available Services</h2>
+
+    <div class="service">
+      <h3>📝 Resume बनाना</h3>
+      <p>Professional basic resume तैयार करना।</p>
+      <div class="price">₹50</div>
+      <button onclick="order('Resume बनाना',50)">Order Now</button>
+    </div>
+
+    <div class="service">
+      <h3>📄 PDF Convert</h3>
+      <p>Document को PDF में convert करना।</p>
+      <div class="price">₹20</div>
+      <button onclick="order('PDF Convert',20)">Order Now</button>
+    </div>
+
+    <div class="service">
+      <h3>⌨️ Typing Work</h3>
+      <p>Hindi/English typing assistance।</p>
+      <div class="price">₹20 / Page</div>
+      <button onclick="order('Typing Work',20)">Order Now</button>
+    </div>
+
+    <div class="service">
+      <h3>📊 Excel / Data Entry</h3>
+      <p>Basic Excel और data entry assistance।</p>
+      <div class="price">₹30 / Page</div>
+      <button onclick="order('Excel / Data Entry',30)">Order Now</button>
+    </div>
+
+    <div class="service">
+      <h3>📑 Online Form Assistance</h3>
+      <p>Online form भरने में सहायता।</p>
+      <div class="price">₹50</div>
+      <button onclick="order('Online Form Assistance',50)">Order Now</button>
+    </div>
+
+    <div class="service">
+      <h3>🎓 Scholarship Form Assistance</h3>
+      <p>Scholarship application में सहायता।</p>
+      <div class="price">₹50</div>
+      <button onclick="order('Scholarship Form Assistance',50)">Order Now</button>
+    </div>
+
+    <div class="service">
+      <h3>💼 Job Application Assistance</h3>
+      <p>Online job application भरने में सहायता।</p>
+      <div class="price">₹50</div>
+      <button onclick="order('Job Application Assistance',50)">Order Now</button>
+    </div>
+
+    <div class="service">
+      <h3>🖼️ Photo Resize / Compress</h3>
+      <p>Photo का size और format तैयार करना।</p>
+      <div class="price">₹10</div>
+      <button onclick="order('Photo Resize / Compress',10)">Order Now</button>
+    </div>
+
+    <div class="service">
+      <h3>📁 PDF Merge / Split</h3>
+      <p>PDF files को merge या split करना।</p>
+      <div class="price">₹10</div>
+      <button onclick="order('PDF Merge / Split',10)">Order Now</button>
+    </div>
+
+    <div class="service">
+      <h3>📄 Scan to PDF</h3>
+      <p>Documents को PDF format में तैयार करना।</p>
+      <div class="price">₹10</div>
+      <button onclick="order('Scan to PDF',10)">Order Now</button>
+    </div>
+
+    <div class="service">
+      <h3>🖨️ Document Print Assistance</h3>
+      <p>Print-ready document तैयार करना।</p>
+      <div class="price">₹10</div>
+      <button onclick="order('Document Print Assistance',10)">Order Now</button>
+    </div>
+
+    <div class="service">
+      <h3>💻 Computer Operator Work</h3>
+      <p>Basic computer work और document assistance।</p>
+      <div class="price">काम के अनुसार</div>
+      <button onclick="order('Computer Operator Work',0)">Request Service</button>
+    </div>
+
+  </div>
+
+  <!-- ORDERS -->
+  <div class="card">
+    <h2>📋 My Orders</h2>
+    <div id="orders">
+      <p class="small">अभी कोई order नहीं है।</p>
+    </div>
+  </div>
 
 </div>
 
-<div class="card">
+<div id="message"></div>
 
-  <h2>💰Real Tasks</h2>
-
-  <div class="earn">
-    <span>Daily Check-in<br>₹10 Real</span>
-    <button onclick="real()">Claim</button>
-  </div>
-
-  <div class="earn">
-    <span>Watch Video<br>₹20 Real</span>
-    <button onclick="real()">Watch</button>
-  </div>
-
-  <div class="earn">
-    <span>Refer Friend<br>₹50 Real</span>
-    <button onclick="real()">Refer</button>
-  </div>
-
-</div>
-
-<div class="card">
-  <p class="real">
-    यह Real वेबसाइट है।<br>
-    वास्तविक पैसे का भुगतान होता है।
-  </p>
 </div>
 
 <script>
-function real(){
-  alert("यह रियल feature है। वास्तविक payment होती है।");
+
+function showRegister(){
+  document.getElementById("loginBox").classList.add("hidden");
+  document.getElementById("registerBox").classList.remove("hidden");
 }
+
+function showLogin(){
+  document.getElementById("registerBox").classList.add("hidden");
+  document.getElementById("loginBox").classList.remove("hidden");
+}
+
+function register(){
+
+  let name=document.getElementById("regName").value.trim();
+  let email=document.getElementById("regEmail").value.trim();
+  let password=document.getElementById("regPassword").value;
+
+  if(!name || !email || !password){
+    alert("सभी जानकारी भरें।");
+    return;
+  }
+
+  let user={
+    name:name,
+    email:email,
+    password:password,
+    orders:[]
+  };
+
+  localStorage.setItem("cwhUser",JSON.stringify(user));
+
+  alert("Registration सफल हुआ। अब Login करें।");
+
+  showLogin();
+}
+
+function login(){
+
+  let email=document.getElementById("loginEmail").value.trim();
+  let password=document.getElementById("loginPassword").value;
+
+  let saved=localStorage.getItem("cwhUser");
+
+  if(!saved){
+    alert("पहले Register करें।");
+    return;
+  }
+
+  let user=JSON.parse(saved);
+
+  if(email===user.email && password===user.password){
+
+    localStorage.setItem("cwhLoggedIn","yes");
+
+    document.getElementById("loginBox").classList.add("hidden");
+    document.getElementById("registerBox").classList.add("hidden");
+    document.getElementById("dashboard").classList.remove("hidden");
+
+    document.getElementById("userName").innerText=user.name;
+
+    loadOrders();
+
+  }else{
+    alert("Email या Password गलत है।");
+  }
+}
+
+function logout(){
+
+  localStorage.removeItem("cwhLoggedIn");
+
+  document.getElementById("dashboard").classList.add("hidden");
+  document.getElementById("loginBox").classList.remove("hidden");
+}
+
+function order(service,price){
+
+  let saved=localStorage.getItem("cwhUser");
+
+  if(!saved){
+    alert("पहले Login करें।");
+    return;
+  }
+
+  let user=JSON.parse(saved);
+
+  let newOrder={
+    service:service,
+    price:price,
+    status:"Payment Pending",
+    date:new Date().toLocaleString()
+  };
+
+  user.orders.push(newOrder);
+
+  localStorage.setItem("cwhUser",JSON.stringify(user));
+
+  /*
+    अभी यह DEMO order है।
+    असली payment gateway अगले चरण में जोड़ा जाएगा।
+  */
+
+  alert(
+    "Order बनाया गया।\n\nService: "+
+    service+
+    "\nCharge: "+
+    (price>0 ? "₹"+price : "Service के अनुसार")+
+    "\n\nअगले चरण में यहाँ असली Payment option जोड़ा जाएगा।"
+  );
+
+  loadOrders();
+}
+
+function loadOrders(){
+
+  let saved=localStorage.getItem("cwhUser");
+
+  if(!saved)return;
+
+  let user=JSON.parse(saved);
+
+  let box=document.getElementById("orders");
+
+  if(user.orders.length===0){
+    box.innerHTML='<p class="small">अभी कोई order नहीं है।</p>';
+    return;
+  }
+
+  box.innerHTML="";
+
+  user.orders.forEach(function(o,index){
+
+    box.innerHTML+=`
+      <div class="service">
+        <b>${o.service}</b>
+        <p>Charge: ${o.price>0 ? "₹"+o.price : "Service के अनुसार"}</p>
+        <p>Status: ${o.status}</p>
+        <p class="small">${o.date}</p>
+      </div>
+    `;
+
+  });
+}
+
+window.onload=function(){
+
+  if(localStorage.getItem("cwhLoggedIn")==="yes"){
+
+    let saved=localStorage.getItem("cwhUser");
+
+    if(saved){
+
+      let user=JSON.parse(saved);
+
+      document.getElementById("loginBox").classList.add("hidden");
+      document.getElementById("dashboard").classList.remove("hidden");
+
+      document.getElementById("userName").innerText=user.name;
+
+      loadOrders();
+    }
+  }
+};
+
 </script>
 
 </body>
