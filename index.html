@@ -2,75 +2,81 @@
 <html lang="hi">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Computer Work Hub</title>
 
 <style>
 *{box-sizing:border-box}
 body{
-  margin:0;
-  font-family:Arial,sans-serif;
-  background:#f4f7fb;
-  color:#222;
+ margin:0;
+ font-family:Arial,sans-serif;
+ background:#f3f6fa;
+ color:#222;
 }
 header{
-  background:#1769e0;
-  color:white;
-  padding:18px;
-  text-align:center;
+ background:#1769e0;
+ color:#fff;
+ padding:18px;
+ text-align:center;
 }
-header h1{margin:0 0 6px}
 .container{
-  max-width:900px;
-  margin:auto;
-  padding:15px;
+ max-width:700px;
+ margin:auto;
+ padding:15px;
 }
 .card{
-  background:white;
-  border-radius:14px;
-  padding:18px;
-  margin:15px 0;
-  box-shadow:0 3px 12px rgba(0,0,0,.08);
+ background:#fff;
+ padding:18px;
+ margin:15px 0;
+ border-radius:14px;
+ box-shadow:0 3px 12px #00000012;
 }
 input,button{
-  width:100%;
-  padding:12px;
-  margin:7px 0;
-  border-radius:8px;
-  font-size:16px;
+ width:100%;
+ padding:13px;
+ margin:7px 0;
+ border-radius:8px;
+ font-size:16px;
 }
-input{
-  border:1px solid #ccc;
-}
+input{border:1px solid #ccc}
 button{
-  border:0;
-  background:#1769e0;
-  color:white;
-  cursor:pointer;
+ border:0;
+ background:#1769e0;
+ color:#fff;
+ font-weight:bold;
 }
-button:hover{opacity:.9}
+.green{background:#0a8f45}
+.red{background:#d93025}
+.gray{background:#555}
 .service{
-  border:1px solid #ddd;
-  border-radius:12px;
-  padding:15px;
-  margin:12px 0;
+ border:1px solid #ddd;
+ padding:15px;
+ margin:12px 0;
+ border-radius:12px;
 }
 .price{
-  font-size:20px;
-  font-weight:bold;
-  color:#0b8f42;
-}
-.logout{
-  background:#d93025;
+ color:#0a8f45;
+ font-size:20px;
+ font-weight:bold;
 }
 .hidden{display:none}
 .small{
-  color:#666;
-  font-size:14px;
+ color:#666;
+ font-size:14px;
 }
-#message{
-  font-weight:bold;
-  text-align:center;
+.success{
+ background:#e7f7ed;
+ color:#087a39;
+ padding:15px;
+ border-radius:10px;
+ text-align:center;
+ font-weight:bold;
+}
+.pending{
+ background:#fff4d6;
+ color:#8a6100;
+ padding:10px;
+ border-radius:8px;
 }
 </style>
 </head>
@@ -78,312 +84,343 @@ button:hover{opacity:.9}
 <body>
 
 <header>
-  <h1>💻 Computer Work Hub</h1>
-  <div>Online Computer Services</div>
+<h1>💻 Computer Work Hub</h1>
+<p>Online Computer Services</p>
 </header>
 
 <div class="container">
 
 <!-- LOGIN -->
 <div class="card" id="loginBox">
-  <h2>🔐 Login</h2>
+<h2>🔐 Login</h2>
 
-  <input id="loginEmail" type="email" placeholder="Email">
-  <input id="loginPassword" type="password" placeholder="Password">
+<input id="loginEmail" type="email" placeholder="Email">
+<input id="loginPassword" type="password" placeholder="Password">
 
-  <button onclick="login()">Login</button>
+<button onclick="login()">Login</button>
 
-  <p>Account नहीं है?</p>
-  <button onclick="showRegister()">Register करें</button>
+<p>नया account है?</p>
+<button class="gray" onclick="showRegister()">Register करें</button>
 </div>
 
 <!-- REGISTER -->
 <div class="card hidden" id="registerBox">
-  <h2>📝 Register</h2>
+<h2>📝 Register</h2>
 
-  <input id="regName" placeholder="आपका नाम">
-  <input id="regEmail" type="email" placeholder="Email">
-  <input id="regPassword" type="password" placeholder="Password">
+<input id="regName" placeholder="आपका नाम">
+<input id="regEmail" type="email" placeholder="Email">
+<input id="regPassword" type="password" placeholder="Password">
 
-  <button onclick="register()">Register</button>
-  <button onclick="showLogin()">Login पर जाएँ</button>
+<button onclick="register()">Register</button>
+<button class="gray" onclick="showLogin()">Login पर जाएँ</button>
 </div>
 
 <!-- DASHBOARD -->
 <div id="dashboard" class="hidden">
 
-  <div class="card">
-    <h2>👋 Welcome, <span id="userName"></span></h2>
-    <p class="small">अपनी जरूरत की service चुनें।</p>
-    <button class="logout" onclick="logout()">Logout</button>
-  </div>
+<div class="card">
+<h2>👋 Welcome, <span id="userName"></span></h2>
+<p class="small">नीचे अपनी service चुनें।</p>
+<button class="red" onclick="logout()">Logout</button>
+</div>
 
-  <div class="card">
-    <h2>💻 Available Services</h2>
+<div class="card">
+<h2>💻 Services</h2>
 
-    <div class="service">
-      <h3>📝 Resume बनाना</h3>
-      <p>Professional basic resume तैयार करना।</p>
-      <div class="price">₹50</div>
-      <button onclick="order('Resume बनाना',50)">Order Now</button>
-    </div>
+<div class="service">
+<h3>📝 Resume बनाना</h3>
+<p>Basic professional resume.</p>
+<div class="price">₹50</div>
+<button onclick="openPayment('Resume बनाना',50)">Pay Now</button>
+</div>
 
-    <div class="service">
-      <h3>📄 PDF Convert</h3>
-      <p>Document को PDF में convert करना।</p>
-      <div class="price">₹20</div>
-      <button onclick="order('PDF Convert',20)">Order Now</button>
-    </div>
+<div class="service">
+<h3>📄 PDF Convert</h3>
+<p>Document को PDF में convert करना।</p>
+<div class="price">₹20</div>
+<button onclick="openPayment('PDF Convert',20)">Pay Now</button>
+</div>
 
-    <div class="service">
-      <h3>⌨️ Typing Work</h3>
-      <p>Hindi/English typing assistance।</p>
-      <div class="price">₹20 / Page</div>
-      <button onclick="order('Typing Work',20)">Order Now</button>
-    </div>
+<div class="service">
+<h3>⌨️ Typing Work</h3>
+<p>Hindi/English typing assistance.</p>
+<div class="price">₹20</div>
+<button onclick="openPayment('Typing Work',20)">Pay Now</button>
+</div>
 
-    <div class="service">
-      <h3>📊 Excel / Data Entry</h3>
-      <p>Basic Excel और data entry assistance।</p>
-      <div class="price">₹30 / Page</div>
-      <button onclick="order('Excel / Data Entry',30)">Order Now</button>
-    </div>
+<div class="service">
+<h3>📊 Excel / Data Entry</h3>
+<p>Basic Excel और data entry.</p>
+<div class="price">₹30</div>
+<button onclick="openPayment('Excel / Data Entry',30)">Pay Now</button>
+</div>
 
-    <div class="service">
-      <h3>📑 Online Form Assistance</h3>
-      <p>Online form भरने में सहायता।</p>
-      <div class="price">₹50</div>
-      <button onclick="order('Online Form Assistance',50)">Order Now</button>
-    </div>
+<div class="service">
+<h3>📑 Online Form Assistance</h3>
+<p>Online form भरने में सहायता।</p>
+<div class="price">₹50</div>
+<button onclick="openPayment('Online Form Assistance',50)">Pay Now</button>
+</div>
 
-    <div class="service">
-      <h3>🎓 Scholarship Form Assistance</h3>
-      <p>Scholarship application में सहायता।</p>
-      <div class="price">₹50</div>
-      <button onclick="order('Scholarship Form Assistance',50)">Order Now</button>
-    </div>
+<div class="service">
+<h3>🎓 Scholarship Assistance</h3>
+<p>Scholarship application assistance.</p>
+<div class="price">₹50</div>
+<button onclick="openPayment('Scholarship Assistance',50)">Pay Now</button>
+</div>
 
-    <div class="service">
-      <h3>💼 Job Application Assistance</h3>
-      <p>Online job application भरने में सहायता।</p>
-      <div class="price">₹50</div>
-      <button onclick="order('Job Application Assistance',50)">Order Now</button>
-    </div>
+<div class="service">
+<h3>💼 Job Application Assistance</h3>
+<p>Online job application assistance.</p>
+<div class="price">₹50</div>
+<button onclick="openPayment('Job Application Assistance',50)">Pay Now</button>
+</div>
 
-    <div class="service">
-      <h3>🖼️ Photo Resize / Compress</h3>
-      <p>Photo का size और format तैयार करना।</p>
-      <div class="price">₹10</div>
-      <button onclick="order('Photo Resize / Compress',10)">Order Now</button>
-    </div>
+<div class="service">
+<h3>🖼️ Photo Resize / Compress</h3>
+<p>Photo का size और format तैयार करना।</p>
+<div class="price">₹10</div>
+<button onclick="openPayment('Photo Resize / Compress',10)">Pay Now</button>
+</div>
 
-    <div class="service">
-      <h3>📁 PDF Merge / Split</h3>
-      <p>PDF files को merge या split करना।</p>
-      <div class="price">₹10</div>
-      <button onclick="order('PDF Merge / Split',10)">Order Now</button>
-    </div>
+<div class="service">
+<h3>📁 PDF Merge / Split</h3>
+<p>PDF files merge या split करना।</p>
+<div class="price">₹10</div>
+<button onclick="openPayment('PDF Merge / Split',10)">Pay Now</button>
+</div>
 
-    <div class="service">
-      <h3>📄 Scan to PDF</h3>
-      <p>Documents को PDF format में तैयार करना।</p>
-      <div class="price">₹10</div>
-      <button onclick="order('Scan to PDF',10)">Order Now</button>
-    </div>
-
-    <div class="service">
-      <h3>🖨️ Document Print Assistance</h3>
-      <p>Print-ready document तैयार करना।</p>
-      <div class="price">₹10</div>
-      <button onclick="order('Document Print Assistance',10)">Order Now</button>
-    </div>
-
-    <div class="service">
-      <h3>💻 Computer Operator Work</h3>
-      <p>Basic computer work और document assistance।</p>
-      <div class="price">काम के अनुसार</div>
-      <button onclick="order('Computer Operator Work',0)">Request Service</button>
-    </div>
-
-  </div>
-
-  <!-- ORDERS -->
-  <div class="card">
-    <h2>📋 My Orders</h2>
-    <div id="orders">
-      <p class="small">अभी कोई order नहीं है।</p>
-    </div>
-  </div>
+<div class="service">
+<h3>📄 Scan to PDF</h3>
+<p>Document को PDF में तैयार करना।</p>
+<div class="price">₹10</div>
+<button onclick="openPayment('Scan to PDF',10)">Pay Now</button>
+</div>
 
 </div>
 
-<div id="message"></div>
+<!-- ORDERS -->
+<div class="card">
+<h2>📋 My Orders</h2>
+<div id="orders">
+<p class="small">अभी कोई order नहीं है।</p>
+</div>
+</div>
+
+</div>
+
+<!-- PAYMENT DEMO -->
+<div class="card hidden" id="paymentBox">
+
+<h2>💳 Demo Payment</h2>
+
+<div class="service">
+<p>Service</p>
+<h3 id="payService"></h3>
+
+<p>Amount</p>
+<div class="price" id="payAmount"></div>
+</div>
+
+<p class="small">
+⚠️ यह केवल Demo Payment है। कोई वास्तविक पैसा नहीं कटेगा।
+</p>
+
+<button class="green" onclick="demoPayment()">
+✅ Demo Payment Successful
+</button>
+
+<button class="gray" onclick="closePayment()">
+Cancel
+</button>
+
+</div>
 
 </div>
 
 <script>
 
+let selectedService="";
+let selectedPrice=0;
+
 function showRegister(){
-  document.getElementById("loginBox").classList.add("hidden");
-  document.getElementById("registerBox").classList.remove("hidden");
+ document.getElementById("loginBox").classList.add("hidden");
+ document.getElementById("registerBox").classList.remove("hidden");
 }
 
 function showLogin(){
-  document.getElementById("registerBox").classList.add("hidden");
-  document.getElementById("loginBox").classList.remove("hidden");
+ document.getElementById("registerBox").classList.add("hidden");
+ document.getElementById("loginBox").classList.remove("hidden");
 }
 
 function register(){
 
-  let name=document.getElementById("regName").value.trim();
-  let email=document.getElementById("regEmail").value.trim();
-  let password=document.getElementById("regPassword").value;
+ let name=document.getElementById("regName").value.trim();
+ let email=document.getElementById("regEmail").value.trim();
+ let password=document.getElementById("regPassword").value;
 
-  if(!name || !email || !password){
-    alert("सभी जानकारी भरें।");
-    return;
-  }
+ if(!name || !email || !password){
+  alert("सभी जानकारी भरें।");
+  return;
+ }
 
-  let user={
-    name:name,
-    email:email,
-    password:password,
-    orders:[]
-  };
+ let user={
+  name:name,
+  email:email,
+  password:password,
+  orders:[]
+ };
 
-  localStorage.setItem("cwhUser",JSON.stringify(user));
+ localStorage.setItem("cwhUser",JSON.stringify(user));
 
-  alert("Registration सफल हुआ। अब Login करें।");
+ alert("Registration सफल हुआ। अब Login करें।");
 
-  showLogin();
+ showLogin();
 }
 
 function login(){
 
-  let email=document.getElementById("loginEmail").value.trim();
-  let password=document.getElementById("loginPassword").value;
+ let email=document.getElementById("loginEmail").value.trim();
+ let password=document.getElementById("loginPassword").value;
 
-  let saved=localStorage.getItem("cwhUser");
+ let saved=localStorage.getItem("cwhUser");
 
-  if(!saved){
-    alert("पहले Register करें।");
-    return;
-  }
+ if(!saved){
+  alert("पहले Register करें।");
+  return;
+ }
 
-  let user=JSON.parse(saved);
+ let user=JSON.parse(saved);
 
-  if(email===user.email && password===user.password){
+ if(email===user.email && password===user.password){
 
-    localStorage.setItem("cwhLoggedIn","yes");
+  localStorage.setItem("cwhLoggedIn","yes");
 
-    document.getElementById("loginBox").classList.add("hidden");
-    document.getElementById("registerBox").classList.add("hidden");
-    document.getElementById("dashboard").classList.remove("hidden");
+  document.getElementById("loginBox").classList.add("hidden");
+  document.getElementById("registerBox").classList.add("hidden");
+  document.getElementById("dashboard").classList.remove("hidden");
 
-    document.getElementById("userName").innerText=user.name;
+  document.getElementById("userName").innerText=user.name;
 
-    loadOrders();
+  loadOrders();
 
-  }else{
-    alert("Email या Password गलत है।");
-  }
+ }else{
+  alert("Email या Password गलत है।");
+ }
 }
 
 function logout(){
 
-  localStorage.removeItem("cwhLoggedIn");
+ localStorage.removeItem("cwhLoggedIn");
 
-  document.getElementById("dashboard").classList.add("hidden");
-  document.getElementById("loginBox").classList.remove("hidden");
+ document.getElementById("dashboard").classList.add("hidden");
+ document.getElementById("paymentBox").classList.add("hidden");
+ document.getElementById("loginBox").classList.remove("hidden");
 }
 
-function order(service,price){
+function openPayment(service,price){
 
-  let saved=localStorage.getItem("cwhUser");
+ selectedService=service;
+ selectedPrice=price;
 
-  if(!saved){
-    alert("पहले Login करें।");
-    return;
-  }
+ document.getElementById("payService").innerText=service;
+ document.getElementById("payAmount").innerText="₹"+price;
 
-  let user=JSON.parse(saved);
+ document.getElementById("dashboard").classList.add("hidden");
+ document.getElementById("paymentBox").classList.remove("hidden");
 
-  let newOrder={
-    service:service,
-    price:price,
-    status:"Payment Pending",
-    date:new Date().toLocaleString()
-  };
+ window.scrollTo(0,0);
+}
 
-  user.orders.push(newOrder);
+function closePayment(){
 
-  localStorage.setItem("cwhUser",JSON.stringify(user));
+ document.getElementById("paymentBox").classList.add("hidden");
+ document.getElementById("dashboard").classList.remove("hidden");
+}
 
-  /*
-    अभी यह DEMO order है।
-    असली payment gateway अगले चरण में जोड़ा जाएगा।
-  */
+function demoPayment(){
 
-  alert(
-    "Order बनाया गया।\n\nService: "+
-    service+
-    "\nCharge: "+
-    (price>0 ? "₹"+price : "Service के अनुसार")+
-    "\n\nअगले चरण में यहाँ असली Payment option जोड़ा जाएगा।"
-  );
+ let saved=localStorage.getItem("cwhUser");
 
-  loadOrders();
+ if(!saved){
+  alert("पहले Login करें।");
+  return;
+ }
+
+ let user=JSON.parse(saved);
+
+ let order={
+  service:selectedService,
+  price:selectedPrice,
+  status:"Paid (Demo)",
+  date:new Date().toLocaleString()
+ };
+
+ user.orders.push(order);
+
+ localStorage.setItem("cwhUser",JSON.stringify(user));
+
+ alert(
+  "Demo Payment Successful!\n\n"+
+  "Service: "+selectedService+
+  "\nAmount: ₹"+selectedPrice
+ );
+
+ document.getElementById("paymentBox").classList.add("hidden");
+ document.getElementById("dashboard").classList.remove("hidden");
+
+ loadOrders();
 }
 
 function loadOrders(){
 
-  let saved=localStorage.getItem("cwhUser");
+ let saved=localStorage.getItem("cwhUser");
 
-  if(!saved)return;
+ if(!saved)return;
 
-  let user=JSON.parse(saved);
+ let user=JSON.parse(saved);
 
-  let box=document.getElementById("orders");
+ let box=document.getElementById("orders");
 
-  if(user.orders.length===0){
-    box.innerHTML='<p class="small">अभी कोई order नहीं है।</p>';
-    return;
-  }
+ if(user.orders.length===0){
+  box.innerHTML='<p class="small">अभी कोई order नहीं है।</p>';
+  return;
+ }
 
-  box.innerHTML="";
+ box.innerHTML="";
 
-  user.orders.forEach(function(o,index){
+ user.orders.forEach(function(o){
 
-    box.innerHTML+=`
-      <div class="service">
-        <b>${o.service}</b>
-        <p>Charge: ${o.price>0 ? "₹"+o.price : "Service के अनुसार"}</p>
-        <p>Status: ${o.status}</p>
-        <p class="small">${o.date}</p>
-      </div>
-    `;
+  box.innerHTML+=`
+   <div class="service">
+    <h3>${o.service}</h3>
+    <p>Amount: <b>₹${o.price}</b></p>
+    <div class="success">✅ ${o.status}</div>
+    <p class="small">${o.date}</p>
+   </div>
+  `;
 
-  });
+ });
 }
 
 window.onload=function(){
 
-  if(localStorage.getItem("cwhLoggedIn")==="yes"){
+ if(localStorage.getItem("cwhLoggedIn")==="yes"){
 
-    let saved=localStorage.getItem("cwhUser");
+  let saved=localStorage.getItem("cwhUser");
 
-    if(saved){
+  if(saved){
 
-      let user=JSON.parse(saved);
+   let user=JSON.parse(saved);
 
-      document.getElementById("loginBox").classList.add("hidden");
-      document.getElementById("dashboard").classList.remove("hidden");
+   document.getElementById("loginBox").classList.add("hidden");
+   document.getElementById("dashboard").classList.remove("hidden");
 
-      document.getElementById("userName").innerText=user.name;
+   document.getElementById("userName").innerText=user.name;
 
-      loadOrders();
-    }
+   loadOrders();
   }
+ }
 };
 
 </script>
