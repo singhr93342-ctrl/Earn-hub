@@ -2,81 +2,150 @@
 <html lang="hi">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Computer Work Hub</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>कमाई साथी - Demo</title>
 
 <style>
 *{box-sizing:border-box}
+
 body{
- margin:0;
- font-family:Arial,sans-serif;
- background:#f3f6fa;
- color:#222;
+    margin:0;
+    font-family:Arial,sans-serif;
+    background:#f4f7fb;
+    color:#222;
 }
+
 header{
- background:#1769e0;
- color:#fff;
- padding:18px;
- text-align:center;
+    background:#1769e0;
+    color:white;
+    padding:18px;
+    text-align:center;
 }
+
+header h1{
+    margin:0;
+    font-size:26px;
+}
+
+.demo{
+    background:#fff3cd;
+    color:#856404;
+    padding:9px;
+    text-align:center;
+    font-weight:bold;
+}
+
 .container{
- max-width:700px;
- margin:auto;
- padding:15px;
+    max-width:700px;
+    margin:auto;
+    padding:15px;
 }
+
 .card{
- background:#fff;
- padding:18px;
- margin:15px 0;
- border-radius:14px;
- box-shadow:0 3px 12px #00000012;
+    background:white;
+    border-radius:15px;
+    padding:18px;
+    margin:15px 0;
+    box-shadow:0 3px 12px rgba(0,0,0,.08);
 }
-input,button{
- width:100%;
- padding:13px;
- margin:7px 0;
- border-radius:8px;
- font-size:16px;
+
+input{
+    width:100%;
+    padding:13px;
+    margin:7px 0;
+    border:1px solid #ccc;
+    border-radius:8px;
+    font-size:16px;
 }
-input{border:1px solid #ccc}
+
 button{
- border:0;
- background:#1769e0;
- color:#fff;
- font-weight:bold;
+    width:100%;
+    padding:13px;
+    margin:7px 0;
+    border:0;
+    border-radius:8px;
+    background:#1769e0;
+    color:white;
+    font-size:16px;
+    font-weight:bold;
 }
-.green{background:#0a8f45}
-.red{background:#d93025}
-.gray{background:#555}
-.service{
- border:1px solid #ddd;
- padding:15px;
- margin:12px 0;
- border-radius:12px;
+
+.green{
+    background:#0a8f45;
 }
-.price{
- color:#0a8f45;
- font-size:20px;
- font-weight:bold;
+
+.red{
+    background:#d93025;
 }
-.hidden{display:none}
+
+.gray{
+    background:#555;
+}
+
+.hidden{
+    display:none;
+}
+
+.balance{
+    background:#1769e0;
+    color:white;
+    border-radius:15px;
+    padding:22px;
+    text-align:center;
+}
+
+.balance h2{
+    margin:0;
+    font-size:17px;
+}
+
+.balance .money{
+    font-size:34px;
+    margin-top:10px;
+    font-weight:bold;
+}
+
+.task{
+    border:1px solid #ddd;
+    border-radius:12px;
+    padding:15px;
+    margin:12px 0;
+}
+
+.task h3{
+    margin-top:0;
+}
+
+.reward{
+    color:#0a8f45;
+    font-size:19px;
+    font-weight:bold;
+}
+
+.history{
+    border-bottom:1px solid #ddd;
+    padding:12px 0;
+}
+
 .small{
- color:#666;
- font-size:14px;
+    font-size:13px;
+    color:#666;
 }
+
 .success{
- background:#e7f7ed;
- color:#087a39;
- padding:15px;
- border-radius:10px;
- text-align:center;
- font-weight:bold;
+    background:#e8f7ed;
+    color:#087a39;
+    padding:12px;
+    border-radius:8px;
+    text-align:center;
+    font-weight:bold;
 }
-.pending{
- background:#fff4d6;
- color:#8a6100;
- padding:10px;
- border-radius:8px;
+
+.refbox{
+    background:#f1f5ff;
+    padding:12px;
+    border-radius:10px;
+    word-break:break-all;
 }
 </style>
 </head>
@@ -84,343 +153,566 @@ button{
 <body>
 
 <header>
-<h1>💻 Computer Work Hub</h1>
-<p>Online Computer Services</p>
+    <h1>💰 कमाई साथी</h1>
+    <p>ऑनलाइन काम और कमाई प्लेटफॉर्म</p>
 </header>
+
+<div class="demo">
+    ⚠️ DEMO वेबसाइट — यह केवल अभ्यास के लिए है। असली पैसे नहीं मिलते।
+</div>
 
 <div class="container">
 
 <!-- LOGIN -->
 <div class="card" id="loginBox">
-<h2>🔐 Login</h2>
 
-<input id="loginEmail" type="email" placeholder="Email">
-<input id="loginPassword" type="password" placeholder="Password">
+    <h2>🔐 लॉगिन</h2>
 
-<button onclick="login()">Login</button>
+    <input id="loginEmail" type="email" placeholder="ईमेल">
+    <input id="loginPassword" type="password" placeholder="पासवर्ड">
 
-<p>नया account है?</p>
-<button class="gray" onclick="showRegister()">Register करें</button>
+    <button onclick="login()">लॉगिन करें</button>
+
+    <p>नया खाता है?</p>
+
+    <button class="gray" onclick="showRegister()">
+        नया खाता बनाएँ
+    </button>
+
 </div>
+
 
 <!-- REGISTER -->
 <div class="card hidden" id="registerBox">
-<h2>📝 Register</h2>
 
-<input id="regName" placeholder="आपका नाम">
-<input id="regEmail" type="email" placeholder="Email">
-<input id="regPassword" type="password" placeholder="Password">
+    <h2>📝 रजिस्ट्रेशन</h2>
 
-<button onclick="register()">Register</button>
-<button class="gray" onclick="showLogin()">Login पर जाएँ</button>
+    <input id="regName" placeholder="पूरा नाम">
+
+    <input id="regEmail" type="email" placeholder="ईमेल">
+
+    <input id="regPassword" type="password" placeholder="पासवर्ड">
+
+    <button onclick="register()">
+        रजिस्टर करें
+    </button>
+
+    <button class="gray" onclick="showLogin()">
+        लॉगिन पर जाएँ
+    </button>
+
 </div>
+
 
 <!-- DASHBOARD -->
 <div id="dashboard" class="hidden">
 
-<div class="card">
-<h2>👋 Welcome, <span id="userName"></span></h2>
-<p class="small">नीचे अपनी service चुनें।</p>
-<button class="red" onclick="logout()">Logout</button>
+    <!-- USER -->
+    <div class="card">
+        <h2>👋 नमस्ते, <span id="userName"></span></h2>
+        <button class="red" onclick="logout()">लॉगआउट</button>
+    </div>
+
+
+    <!-- BALANCE -->
+    <div class="balance">
+
+        <h2>आपकी Demo कमाई</h2>
+
+        <div class="money">
+            ₹<span id="balance">0</span>
+        </div>
+
+        <p>यह केवल Demo Balance है</p>
+
+    </div>
+
+
+    <!-- TASKS -->
+    <div class="card">
+
+        <h2>📝 आज के Demo Tasks</h2>
+
+        <div class="task">
+
+            <h3>📄 छोटा सर्वे पूरा करें</h3>
+
+            <p>
+                Demo में survey पूरा करने का अभ्यास करें।
+            </p>
+
+            <div class="reward">
+                +₹10 Demo
+            </div>
+
+            <button onclick="completeTask('छोटा सर्वे',10)">
+                Task पूरा करें
+            </button>
+
+        </div>
+
+
+        <div class="task">
+
+            <h3>📱 ऐप जानकारी देखें</h3>
+
+            <p>
+                Demo app information पढ़ें।
+            </p>
+
+            <div class="reward">
+                +₹15 Demo
+            </div>
+
+            <button onclick="completeTask('ऐप जानकारी',15)">
+                Task पूरा करें
+            </button>
+
+        </div>
+
+
+        <div class="task">
+
+            <h3>📝 छोटा टेस्ट</h3>
+
+            <p>
+                Demo test पूरा करें।
+            </p>
+
+            <div class="reward">
+                +₹20 Demo
+            </div>
+
+            <button onclick="completeTask('छोटा टेस्ट',20)">
+                Task पूरा करें
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <!-- REFERRAL -->
+    <div class="card">
+
+        <h2>👥 रेफरल</h2>
+
+        <p>
+            अपना Demo referral link share करें।
+        </p>
+
+        <div class="refbox">
+            <span id="refLink"></span>
+        </div>
+
+        <button onclick="copyReferral()">
+            🔗 लिंक कॉपी करें
+        </button>
+
+        <p>
+            Demo referrals:
+            <b id="referrals">0</b>
+        </p>
+
+    </div>
+
+
+    <!-- WITHDRAW -->
+    <div class="card">
+
+        <h2>💸 Demo Withdrawal</h2>
+
+        <p>
+            उपलब्ध Demo Balance:
+            <b>₹<span id="withdrawBalance">0</span></b>
+        </p>
+
+        <input
+            id="upi"
+            placeholder="Demo UPI ID"
+        >
+
+        <button class="green" onclick="withdraw()">
+            Withdrawal Request
+        </button>
+
+        <p class="small">
+            ⚠️ यह केवल Demo request है। कोई वास्तविक payment नहीं होगा।
+        </p>
+
+    </div>
+
+
+    <!-- HISTORY -->
+    <div class="card">
+
+        <h2>📊 कमाई की हिस्ट्री</h2>
+
+        <div id="history">
+            <p class="small">
+                अभी कोई history नहीं है।
+            </p>
+        </div>
+
+    </div>
+
+
+    <!-- LOGOUT -->
+    <button class="red" onclick="logout()">
+        लॉगआउट
+    </button>
+
 </div>
 
-<div class="card">
-<h2>💻 Services</h2>
-
-<div class="service">
-<h3>📝 Resume बनाना</h3>
-<p>Basic professional resume.</p>
-<div class="price">₹50</div>
-<button onclick="openPayment('Resume बनाना',50)">Pay Now</button>
 </div>
 
-<div class="service">
-<h3>📄 PDF Convert</h3>
-<p>Document को PDF में convert करना।</p>
-<div class="price">₹20</div>
-<button onclick="openPayment('PDF Convert',20)">Pay Now</button>
-</div>
-
-<div class="service">
-<h3>⌨️ Typing Work</h3>
-<p>Hindi/English typing assistance.</p>
-<div class="price">₹20</div>
-<button onclick="openPayment('Typing Work',20)">Pay Now</button>
-</div>
-
-<div class="service">
-<h3>📊 Excel / Data Entry</h3>
-<p>Basic Excel और data entry.</p>
-<div class="price">₹30</div>
-<button onclick="openPayment('Excel / Data Entry',30)">Pay Now</button>
-</div>
-
-<div class="service">
-<h3>📑 Online Form Assistance</h3>
-<p>Online form भरने में सहायता।</p>
-<div class="price">₹50</div>
-<button onclick="openPayment('Online Form Assistance',50)">Pay Now</button>
-</div>
-
-<div class="service">
-<h3>🎓 Scholarship Assistance</h3>
-<p>Scholarship application assistance.</p>
-<div class="price">₹50</div>
-<button onclick="openPayment('Scholarship Assistance',50)">Pay Now</button>
-</div>
-
-<div class="service">
-<h3>💼 Job Application Assistance</h3>
-<p>Online job application assistance.</p>
-<div class="price">₹50</div>
-<button onclick="openPayment('Job Application Assistance',50)">Pay Now</button>
-</div>
-
-<div class="service">
-<h3>🖼️ Photo Resize / Compress</h3>
-<p>Photo का size और format तैयार करना।</p>
-<div class="price">₹10</div>
-<button onclick="openPayment('Photo Resize / Compress',10)">Pay Now</button>
-</div>
-
-<div class="service">
-<h3>📁 PDF Merge / Split</h3>
-<p>PDF files merge या split करना।</p>
-<div class="price">₹10</div>
-<button onclick="openPayment('PDF Merge / Split',10)">Pay Now</button>
-</div>
-
-<div class="service">
-<h3>📄 Scan to PDF</h3>
-<p>Document को PDF में तैयार करना।</p>
-<div class="price">₹10</div>
-<button onclick="openPayment('Scan to PDF',10)">Pay Now</button>
-</div>
-
-</div>
-
-<!-- ORDERS -->
-<div class="card">
-<h2>📋 My Orders</h2>
-<div id="orders">
-<p class="small">अभी कोई order नहीं है।</p>
-</div>
-</div>
-
-</div>
-
-<!-- PAYMENT DEMO -->
-<div class="card hidden" id="paymentBox">
-
-<h2>💳 Demo Payment</h2>
-
-<div class="service">
-<p>Service</p>
-<h3 id="payService"></h3>
-
-<p>Amount</p>
-<div class="price" id="payAmount"></div>
-</div>
-
-<p class="small">
-⚠️ यह केवल Demo Payment है। कोई वास्तविक पैसा नहीं कटेगा।
-</p>
-
-<button class="green" onclick="demoPayment()">
-✅ Demo Payment Successful
-</button>
-
-<button class="gray" onclick="closePayment()">
-Cancel
-</button>
-
-</div>
-
-</div>
 
 <script>
 
-let selectedService="";
-let selectedPrice=0;
+let currentUser=null;
 
-function showRegister(){
- document.getElementById("loginBox").classList.add("hidden");
- document.getElementById("registerBox").classList.remove("hidden");
-}
 
-function showLogin(){
- document.getElementById("registerBox").classList.add("hidden");
- document.getElementById("loginBox").classList.remove("hidden");
-}
+/* REGISTER */
 
 function register(){
 
- let name=document.getElementById("regName").value.trim();
- let email=document.getElementById("regEmail").value.trim();
- let password=document.getElementById("regPassword").value;
+    let name=document.getElementById("regName").value.trim();
+    let email=document.getElementById("regEmail").value.trim();
+    let password=document.getElementById("regPassword").value;
 
- if(!name || !email || !password){
-  alert("सभी जानकारी भरें।");
-  return;
- }
+    if(!name || !email || !password){
 
- let user={
-  name:name,
-  email:email,
-  password:password,
-  orders:[]
- };
+        alert("कृपया सभी जानकारी भरें।");
+        return;
+    }
 
- localStorage.setItem("cwhUser",JSON.stringify(user));
+    let user={
+        name:name,
+        email:email,
+        password:password,
+        balance:0,
+        referrals:0,
+        history:[]
+    };
 
- alert("Registration सफल हुआ। अब Login करें।");
+    localStorage.setItem(
+        "earningDemoUser",
+        JSON.stringify(user)
+    );
 
- showLogin();
+    alert("रजिस्ट्रेशन सफल हुआ। अब लॉगिन करें।");
+
+    showLogin();
 }
+
+
+/* LOGIN */
 
 function login(){
 
- let email=document.getElementById("loginEmail").value.trim();
- let password=document.getElementById("loginPassword").value;
+    let email=document
+        .getElementById("loginEmail")
+        .value.trim();
 
- let saved=localStorage.getItem("cwhUser");
+    let password=document
+        .getElementById("loginPassword")
+        .value;
 
- if(!saved){
-  alert("पहले Register करें।");
-  return;
- }
+    let saved=localStorage.getItem(
+        "earningDemoUser"
+    );
 
- let user=JSON.parse(saved);
+    if(!saved){
 
- if(email===user.email && password===user.password){
+        alert("पहले रजिस्ट्रेशन करें।");
+        return;
+    }
 
-  localStorage.setItem("cwhLoggedIn","yes");
+    let user=JSON.parse(saved);
 
-  document.getElementById("loginBox").classList.add("hidden");
-  document.getElementById("registerBox").classList.add("hidden");
-  document.getElementById("dashboard").classList.remove("hidden");
+    if(
+        email===user.email &&
+        password===user.password
+    ){
 
-  document.getElementById("userName").innerText=user.name;
+        currentUser=user;
 
-  loadOrders();
+        localStorage.setItem(
+            "earningDemoLogin",
+            "yes"
+        );
 
- }else{
-  alert("Email या Password गलत है।");
- }
+        showDashboard();
+
+    }else{
+
+        alert("ईमेल या पासवर्ड गलत है।");
+    }
 }
+
+
+/* DASHBOARD */
+
+function showDashboard(){
+
+    document
+        .getElementById("loginBox")
+        .classList.add("hidden");
+
+    document
+        .getElementById("registerBox")
+        .classList.add("hidden");
+
+    document
+        .getElementById("dashboard")
+        .classList.remove("hidden");
+
+    document
+        .getElementById("userName")
+        .innerText=currentUser.name;
+
+    updateDashboard();
+}
+
+
+/* UPDATE */
+
+function updateDashboard(){
+
+    document
+        .getElementById("balance")
+        .innerText=currentUser.balance;
+
+    document
+        .getElementById("withdrawBalance")
+        .innerText=currentUser.balance;
+
+    document
+        .getElementById("referrals")
+        .innerText=currentUser.referrals;
+
+    document
+        .getElementById("refLink")
+        .innerText=
+        "https://example.com/?ref="
+        +encodeURIComponent(currentUser.name);
+
+    loadHistory();
+}
+
+
+/* TASK */
+
+function completeTask(task,reward){
+
+    currentUser.balance += reward;
+
+    currentUser.history.unshift({
+        type:"Task",
+        name:task,
+        amount:reward,
+        date:new Date().toLocaleString()
+    });
+
+    saveUser();
+
+    alert(
+        "Demo Task पूरा हुआ!\n\n"+
+        "Demo Reward: ₹"+reward
+    );
+
+    updateDashboard();
+}
+
+
+/* COPY REFERRAL */
+
+function copyReferral(){
+
+    let link=
+        "https://example.com/?ref="
+        +encodeURIComponent(currentUser.name);
+
+    navigator.clipboard.writeText(link);
+
+    alert("Demo referral link कॉपी हो गया।");
+}
+
+
+/* WITHDRAW */
+
+function withdraw(){
+
+    let upi=
+        document.getElementById("upi")
+        .value.trim();
+
+    if(!upi){
+
+        alert("Demo UPI ID डालें।");
+        return;
+    }
+
+    if(currentUser.balance<=0){
+
+        alert(
+            "Demo balance उपलब्ध नहीं है।"
+        );
+
+        return;
+    }
+
+    let amount=currentUser.balance;
+
+    currentUser.history.unshift({
+        type:"Withdrawal",
+        name:"Demo Withdrawal",
+        amount:amount,
+        date:new Date().toLocaleString()
+    });
+
+    currentUser.balance=0;
+
+    saveUser();
+
+    alert(
+        "Demo Withdrawal Request बनाई गई।\n\n"+
+        "Amount: ₹"+amount+
+        "\n\nयह वास्तविक payment नहीं है।"
+    );
+
+    updateDashboard();
+}
+
+
+/* HISTORY */
+
+function loadHistory(){
+
+    let box=document.getElementById("history");
+
+    if(!currentUser.history ||
+       currentUser.history.length===0){
+
+        box.innerHTML=
+        '<p class="small">'+
+        'अभी कोई history नहीं है।'+
+        '</p>';
+
+        return;
+    }
+
+    box.innerHTML="";
+
+    currentUser.history.forEach(function(item){
+
+        let sign=
+            item.type==="Task"
+            ?"+"
+            :"−";
+
+        box.innerHTML+=`
+
+        <div class="history">
+
+            <b>${item.name}</b>
+
+            <div>
+                ${sign}₹${item.amount}
+            </div>
+
+            <div class="small">
+                ${item.date}
+            </div>
+
+        </div>
+
+        `;
+
+    });
+}
+
+
+/* SAVE */
+
+function saveUser(){
+
+    localStorage.setItem(
+        "earningDemoUser",
+        JSON.stringify(currentUser)
+    );
+}
+
+
+/* LOGOUT */
 
 function logout(){
 
- localStorage.removeItem("cwhLoggedIn");
+    localStorage.removeItem(
+        "earningDemoLogin"
+    );
 
- document.getElementById("dashboard").classList.add("hidden");
- document.getElementById("paymentBox").classList.add("hidden");
- document.getElementById("loginBox").classList.remove("hidden");
+    currentUser=null;
+
+    document
+        .getElementById("dashboard")
+        .classList.add("hidden");
+
+    document
+        .getElementById("loginBox")
+        .classList.remove("hidden");
 }
 
-function openPayment(service,price){
 
- selectedService=service;
- selectedPrice=price;
+/* SHOW LOGIN */
 
- document.getElementById("payService").innerText=service;
- document.getElementById("payAmount").innerText="₹"+price;
+function showLogin(){
 
- document.getElementById("dashboard").classList.add("hidden");
- document.getElementById("paymentBox").classList.remove("hidden");
+    document
+        .getElementById("registerBox")
+        .classList.add("hidden");
 
- window.scrollTo(0,0);
+    document
+        .getElementById("loginBox")
+        .classList.remove("hidden");
 }
 
-function closePayment(){
 
- document.getElementById("paymentBox").classList.add("hidden");
- document.getElementById("dashboard").classList.remove("hidden");
+/* SHOW REGISTER */
+
+function showRegister(){
+
+    document
+        .getElementById("loginBox")
+        .classList.add("hidden");
+
+    document
+        .getElementById("registerBox")
+        .classList.remove("hidden");
 }
 
-function demoPayment(){
 
- let saved=localStorage.getItem("cwhUser");
-
- if(!saved){
-  alert("पहले Login करें।");
-  return;
- }
-
- let user=JSON.parse(saved);
-
- let order={
-  service:selectedService,
-  price:selectedPrice,
-  status:"Paid (Demo)",
-  date:new Date().toLocaleString()
- };
-
- user.orders.push(order);
-
- localStorage.setItem("cwhUser",JSON.stringify(user));
-
- alert(
-  "Demo Payment Successful!\n\n"+
-  "Service: "+selectedService+
-  "\nAmount: ₹"+selectedPrice
- );
-
- document.getElementById("paymentBox").classList.add("hidden");
- document.getElementById("dashboard").classList.remove("hidden");
-
- loadOrders();
-}
-
-function loadOrders(){
-
- let saved=localStorage.getItem("cwhUser");
-
- if(!saved)return;
-
- let user=JSON.parse(saved);
-
- let box=document.getElementById("orders");
-
- if(user.orders.length===0){
-  box.innerHTML='<p class="small">अभी कोई order नहीं है।</p>';
-  return;
- }
-
- box.innerHTML="";
-
- user.orders.forEach(function(o){
-
-  box.innerHTML+=`
-   <div class="service">
-    <h3>${o.service}</h3>
-    <p>Amount: <b>₹${o.price}</b></p>
-    <div class="success">✅ ${o.status}</div>
-    <p class="small">${o.date}</p>
-   </div>
-  `;
-
- });
-}
+/* AUTO LOGIN */
 
 window.onload=function(){
 
- if(localStorage.getItem("cwhLoggedIn")==="yes"){
+    let logged=
+        localStorage.getItem(
+            "earningDemoLogin"
+        );
 
-  let saved=localStorage.getItem("cwhUser");
+    let saved=
+        localStorage.getItem(
+            "earningDemoUser"
+        );
 
-  if(saved){
+    if(logged==="yes" && saved){
 
-   let user=JSON.parse(saved);
+        currentUser=JSON.parse(saved);
 
-   document.getElementById("loginBox").classList.add("hidden");
-   document.getElementById("dashboard").classList.remove("hidden");
+        showDashboard();
+    }
 
-   document.getElementById("userName").innerText=user.name;
-
-   loadOrders();
-  }
- }
 };
 
 </script>
